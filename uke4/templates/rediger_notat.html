@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}
+    Rediger "{{notat['tittel']}}"
+    {% endblock %}</h1>    
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <label for="tittel">Tittel</label>
+    <input 
+        name="tittel" 
+        id="tittel" 
+        value="{{ notat['tittel']}}"
+        required>
+    <label for="tekst">Tekst</label>
+    <textarea name="tekst"
+        id="tekst">{{ notat['tekst']}}</textarea>
+    <button type="submit">Lagre</button>        
+</form>
+<form action="/{{notat['id']}}/slett" method="POST">
+    <button 
+        class="danger" 
+        type="submit" 
+        onclick="return confirm('Er du sikker på at du vil slette?')"
+    >Slett</button>
+</form>
+{% endblock %}

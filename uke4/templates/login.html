@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Registrer{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <label for="brukernavn">Brukernavn</label>
+    <input name="brukernavn" id="brukernavn" required>
+    <label for="passord">Passord</label>
+    <input type="password" name="passord" id="passord" required>
+    <button type="submit">Registrer</button>
+</form>
+{% endblock %}

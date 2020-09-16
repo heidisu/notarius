@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>
+    {% block title %}Notater{% endblock %}
+</h1>
+<a class="action" href="/notat">Nytt notat</a>
+{% endblock %}
+
+{% block content %}
+{% for notat in notater %}
+<article class="notat">
+    <header>
+        <div>
+            <h1>
+                {{ notat['tittel'] }}
+            </h1>
+            <div class="about">{{ notat['created'].strftime('%d-%m-%Y') }}</div>
+        </div>
+        <a class="action" href="/{{notat['id']}}/rediger">Rediger</a>
+    </header>
+    <p class="body">
+        {{ notat['tekst'] }}
+    </p>
+</article>
+{% if not loop.last %}
+<hr>
+{% endif %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Nytt notat{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <label for="tittel">Tittel</label>
+    <input name="tittel" id="tittel" required>
+    <label for="tekst">Tekst</label>
+    <textarea name="tekst" id="tekst"></textarea>
+    <button type="submit">Lagre</button>
+</form>
+{% endblock %}
