@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notarius - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <nav>
+            <h1>Notarius</h1>
+            <ul>
+                {% if g.user %}
+                <li><span>{{ g.user['brukernavn'] }}</span></li>
+                <li><a href="/logout">Logg ut</a></li>
+                {% else %}
+                <li><a href="/registrer">Registrer</a></li>
+                <li><a href="/login">Logg inn</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <section class="content">
+            <header>
+                {% block header %}{% endblock %}
+            </header>
+            {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </section>
+    </body>
+</html>
